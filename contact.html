@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Strategy Session | Truviar AI Consulting</title>
+  <meta name="description" content="Book your free 30-minute strategy session with Truviar AI Consulting. We'll map your ideal client profile and show you exactly how to get 10 qualified sales appointments per month." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── CONTACT-SPECIFIC STYLES ──────────────────────────── */
+
+    /* Contact layout */
+    .contact-section { background: var(--white); }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Left sidebar */
+    .contact-sidebar {}
+    .contact-what {
+      margin-top: 40px;
+    }
+    .contact-what h3 { margin-bottom: 16px; font-size: 1.25rem; }
+    .contact-what-list li {
+      display: flex; gap: 14px; align-items: flex-start;
+      font-size: 15px; color: var(--text);
+      margin-bottom: 16px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--gray-3);
+    }
+    .contact-what-list li:last-child { border-bottom: none; }
+    .cwl-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--green-tint, #E8F5EF);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .cwl-text strong { display: block; margin-bottom: 2px; font-size: 14px; }
+    .cwl-text span   { font-size: 13px; color: var(--gray-1); }
+
+    .contact-details {
+      margin-top: 40px;
+      padding: 28px;
+      background: var(--cream);
+      border-radius: var(--radius);
+    }
+    .contact-details h4 { margin-bottom: 16px; font-size: 1rem; }
+    .contact-detail-item {
+      display: flex; gap: 12px; align-items: center;
+      font-size: 14px; color: var(--text);
+      margin-bottom: 14px;
+    }
+    .contact-detail-item:last-child { margin-bottom: 0; }
+    .cdi-icon { display: inline-flex; align-items: center; flex-shrink: 0; }
+    .cdi-link { color: var(--green-dk); text-decoration: underline; text-underline-offset: 2px; }
+
+    .guarantee-mini {
+      margin-top: 28px;
+      padding: 20px 24px;
+      background: var(--navy);
+      border-radius: var(--radius);
+      display: flex; gap: 16px; align-items: center;
+    }
+    .gm-badge {
+      width: 52px; height: 52px; flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--green);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+    }
+    .gm-badge-num { font-family: var(--ff-head); font-size: 1.1rem; color: var(--navy); line-height: 1; }
+    .gm-badge-lbl { font-size: 7px; text-transform: uppercase; color: var(--navy); }
+    .gm-copy p { font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.6; }
+    .gm-copy strong { color: var(--green-lt); }
+
+    /* Form card */
+    .contact-form-card {
+      background: var(--white);
+      border: 1px solid var(--gray-2);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      box-shadow: var(--shadow);
+    }
+    .contact-form-card h3 { margin-bottom: 6px; }
+    .contact-form-card > p { font-size: 14px; color: var(--gray-1); margin-bottom: 32px; }
+    .cfc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-field { margin-bottom: 16px; }
+    .form-field label {
+      display: block;
+      font-size: 13px; font-weight: 500;
+      color: var(--text-lt);
+      margin-bottom: 6px;
+    }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid var(--gray-2);
+      border-radius: var(--radius-sm);
+      font-family: var(--ff-body); font-size: 15px;
+      color: var(--text); background: var(--white);
+      outline: none; transition: border-color .2s, box-shadow .2s;
+      appearance: none;
+    }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(5,153,102,.14);
+    }
+    .form-field select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8F99' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    .form-field textarea { resize: vertical; min-height: 120px; }
+    .form-submit-btn {
+      width: 100%; padding: 16px;
+      background: var(--green); color: var(--navy);
+      border: none; border-radius: var(--radius-sm);
+      font-family: var(--ff-body); font-size: 15px; font-weight: 500;
+      cursor: pointer; letter-spacing: .04em;
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .form-submit-btn:hover {
+      background: var(--green-dk);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(5,153,102,.35);
+    }
+    .form-disclaimer {
+      text-align: center;
+      font-size: 12px; color: var(--gray-1);
+      margin-top: 14px; line-height: 1.6;
+    }
+
+    /* What to expect */
+    .expect-section { background: var(--cream); }
+    .expect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0;
+      margin-top: 48px;
+      border: 1px solid var(--gray-2);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .expect-item {
+      padding: 32px 28px;
+      border-right: 1px solid var(--gray-2);
+    }
+    .expect-item:last-child { border-right: none; }
+    .expect-num {
+      font-family: var(--ff-head);
+      font-size: 2rem; color: var(--green);
+      line-height: 1; margin-bottom: 14px;
+    }
+    .expect-item h4 { margin-bottom: 8px; }
+    .expect-item p  { font-size: 14px; color: var(--gray-1); line-height: 1.7; }
+
+    /* FAQ section */
+    .faq-section { background: var(--white); }
+
+    /* Alternatives bar */
+    .alt-bar {
+      background: var(--navy-2);
+      padding: 28px 0;
+    }
+    .alt-bar-inner {
+      display: flex; align-items: center; justify-content: center;
+      gap: 32px; flex-wrap: wrap;
+      font-size: 14px; color: rgba(255,255,255,.5);
+    }
+    .alt-bar-inner a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; transition: color .2s; }
+    .alt-bar-inner a:hover { color: var(--green-lt); }
+    .alt-sep { color: rgba(255,255,255,.2); }
+
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 640px) {
+      .contact-form-card { padding: 28px 20px; }
+      .cfc-row { grid-template-columns: 1fr; }
+      .expect-grid { grid-template-columns: 1fr; }
+      .expect-item { border-right: none; border-bottom: 1px solid var(--gray-2); }
+      .expect-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Truviar <span>AI</span></a>
+    <div class="nav-links">
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="proof.html">Results</a>
+      <a href="podcast.html">Podcast</a>
+      <a href="contact.html#faq" class="active">FAQ</a>
+      <a href="contact.html" class="nav-cta">Book a Call</a>
+    </div>
+    <div class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile">
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="proof.html">Results</a>
+  <a href="podcast.html">Podcast</a>
+  <a href="contact.html#faq">FAQ</a>
+  <a href="contact.html" class="nav-mobile-cta">Book a Strategy Call →</a>
+</div>
+
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <p class="tag reveal">Get Started</p>
+    <h1 class="reveal reveal-delay-1">Book Your Free<br><em>Strategy Session</em></h1>
+    <p class="page-hero-sub reveal reveal-delay-2">
+      A 30-minute call. No pitch, no pressure. We'll map your ideal client profile, audit your current lead flow, and show you exactly how the B2B Sales Accelerator would work for your firm — whether or not we work together.
+    </p>
+  </div>
+</section>
+
+
+<!-- ALT BAR -->
+<div class="alt-bar">
+  <div class="alt-bar-inner">
+    <span>Prefer to reach out directly?</span>
+    <span class="alt-sep">|</span>
+    <a href="mailto:hemant@truviar.com">hemant@truviar.com</a>
+    <span class="alt-sep">|</span>
+    <a href="https://linkedin.com/in/hemant-sharma" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    <span class="alt-sep">|</span>
+    <span>Response within 1 business day</span>
+  </div>
+</div>
+
+
+<!-- CONTACT MAIN -->
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- Sidebar -->
+      <div class="reveal">
+        <p class="tag">What to expect</p>
+        <h2 style="font-size:clamp(1.6rem,2.5vw,2.2rem);">A Conversation Built<br>Around Your Firm</h2>
+        <div class="divider"></div>
+
+        <div class="contact-what">
+          <h3>In 30 minutes, we'll cover:</h3>
+          <ul class="contact-what-list">
+            <li>
+              <div class="cwl-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg></div>
+              <div class="cwl-text">
+                <strong>Your Ideal Client Profile</strong>
+                <span>We'll map exactly who you want to be speaking with — sector, seniority, deal size, and what makes them a great fit for your firm.</span>
+              </div>
+            </li>
+            <li>
+              <div class="cwl-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+              <div class="cwl-text">
+                <strong>Your Current Pipeline Audit</strong>
+                <span>An honest look at where your leads are coming from today, what's working, and the gaps that are costing you revenue.</span>
+              </div>
+            </li>
+            <li>
+              <div class="cwl-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+              <div class="cwl-text">
+                <strong>A Custom System Walkthrough</strong>
+                <span>We'll show you specifically how the B2B Sales Accelerator would be configured for your firm's niche, audience, and goals.</span>
+              </div>
+            </li>
+            <li>
+              <div class="cwl-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+              <div class="cwl-text">
+                <strong>An ROI Model for Your Business</strong>
+                <span>Based on your average project value, we'll model the return you can expect from a consistent flow of 10 qualified appointments per month.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contact-details">
+          <h4>Other ways to connect</h4>
+          <div class="contact-detail-item">
+            <span class="cdi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg></span>
+            <a href="mailto:hemant@truviar.com" class="cdi-link">hemant@truviar.com</a>
+          </div>
+          <div class="contact-detail-item">
+            <span class="cdi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+            <a href="https://linkedin.com/company/truviar" target="_blank" rel="noopener" class="cdi-link">linkedin.com/company/truviar</a>
+          </div>
+          <div class="contact-detail-item">
+            <span class="cdi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span>Noida, India · Remote delivery worldwide</span>
+          </div>
+          <div class="contact-detail-item">
+            <span class="cdi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span>Response within 1 business day</span>
+          </div>
+        </div>
+
+        <div class="guarantee-mini">
+          <div class="gm-badge">
+            <span class="gm-badge-num">10</span>
+            <span class="gm-badge-lbl">Appts</span>
+          </div>
+          <div class="gm-copy">
+            <p><strong>The Guarantee:</strong> 10 qualified sales appointments per month — or the next month is free. No exceptions.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-form-card reveal reveal-delay-1">
+        <h3>Request Your Strategy Session</h3>
+        <p>Fill in your details and we'll be in touch within one business day to confirm your slot.</p>
+
+        <form id="contact-form">
+          <div class="cfc-row">
+            <div class="form-field">
+              <label>First name *</label>
+              <input type="text" placeholder="First name" required />
+            </div>
+            <div class="form-field">
+              <label>Last name *</label>
+              <input type="text" placeholder="Last name" required />
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Work email address *</label>
+            <input type="email" placeholder="you@yourfirm.com" required />
+          </div>
+          <div class="form-field">
+            <label>Firm name *</label>
+            <input type="text" placeholder="Your consulting firm name" required />
+          </div>
+          <div class="cfc-row">
+            <div class="form-field">
+              <label>Your role *</label>
+              <select required>
+                <option value="" disabled selected>Select your role</option>
+                <option>Founder / Owner</option>
+                <option>Managing Partner</option>
+                <option>Principal</option>
+                <option>Director</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Type of consulting *</label>
+              <select required>
+                <option value="" disabled selected>Select type</option>
+                <option>Management Consulting</option>
+                <option>IT / Technology Consulting</option>
+                <option>Financial / CFO Advisory</option>
+                <option>Marketing / Growth Consulting</option>
+                <option>Engineering / Operations Consulting</option>
+                <option>HR / Organisational Consulting</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="cfc-row">
+            <div class="form-field">
+              <label>Firm size *</label>
+              <select required>
+                <option value="" disabled selected>Number of consultants</option>
+                <option>Solo / 1–2 people</option>
+                <option>3–10 people</option>
+                <option>11–30 people</option>
+                <option>30+ people</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Average project value</label>
+              <select>
+                <option value="" disabled selected>Approx. deal size</option>
+                <option>$5,000 – $20,000</option>
+                <option>$20,000 – $50,000</option>
+                <option>$50,000 – $150,000</option>
+                <option>$150,000+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field">
+            <label>What's your biggest pipeline challenge right now?</label>
+            <textarea placeholder="e.g. We rely almost entirely on referrals and have no consistent outbound system. We close well when we get in front of the right people, but getting there is the problem…"></textarea>
+          </div>
+          <button type="submit" class="form-submit-btn" id="submit-btn">
+            Request My Free Strategy Session →
+          </button>
+          <p class="form-disclaimer">
+            We typically respond within 1 business day. Your information is kept strictly confidential and is never shared with third parties.
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- WHAT TO EXPECT -->
+<section class="section expect-section" id="expect">
+  <div class="container">
+    <p class="tag reveal">After You Submit</p>
+    <h2 class="reveal reveal-delay-1">Here's What Happens Next</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <div class="expect-grid">
+      <div class="expect-item reveal">
+        <div class="expect-num">01</div>
+        <h4>We Review Your Submission</h4>
+        <p>Within 1 business day, Hemant personally reviews your details to ensure the B2B Sales Accelerator is the right fit for your firm's stage and goals.</p>
+      </div>
+      <div class="expect-item reveal reveal-delay-1">
+        <div class="expect-num">02</div>
+        <h4>We Send You a Booking Link</h4>
+        <p>You'll receive a calendar link to choose a 30-minute slot that suits you. All calls are conducted via video — no travel required.</p>
+      </div>
+      <div class="expect-item reveal reveal-delay-2">
+        <div class="expect-num">03</div>
+        <h4>We Do the Session</h4>
+        <p>A structured 30-minute conversation covering your ICP, pipeline audit, system walkthrough, and an ROI model specific to your firm. No fluff, no pitch.</p>
+      </div>
+      <div class="expect-item reveal reveal-delay-3">
+        <div class="expect-num">04</div>
+        <h4>You Leave with a Plan</h4>
+        <p>Whether or not we work together, you'll leave with clarity on what a predictable pipeline looks like for your firm and what steps to take to get there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ SECTION -->
+<section class="section faq-section" id="faq">
+  <div class="container">
+    <p class="tag reveal">FAQ</p>
+    <h2 class="reveal reveal-delay-1">Questions Before<br>You Book</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <div class="faq-list reveal reveal-delay-2">
+      <div class="faq-item">
+        <button class="faq-q">Is the strategy session really free?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes, completely. There's no charge for the 30-minute session, and no obligation to proceed afterwards. We offer it because we want to be certain the B2B Sales Accelerator is genuinely the right fit for your firm before either of us commits. If it's not, we'll tell you that honestly.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if I'm not ready to start immediately?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">That's completely fine. The strategy session is about getting clarity and building a plan — there's no pressure to start on any particular timeline. Many of our clients use the session to understand what's possible, then begin when the timing is right for their firm.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How is the 10-appointment guarantee structured?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">The guarantee is straightforward: if we deliver fewer than 10 qualified appointments in any given calendar month, the following month's retainer is free. "Qualified" means prospects who meet the specific criteria you define at onboarding — company size, seniority, budget range, and sector. There are no complex conditions or escape clauses.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What do you need from me to get started?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">After the strategy session and sign-off, we need approximately 60–90 minutes of your time for an onboarding session where we capture your ICP details, qualification criteria, and brand voice. From that point, we handle everything — prospecting, outreach, follow-up, qualification, and booking. Your involvement is showing up to the meetings we put on your calendar.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do you work with solo consultants, or only larger firms?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">We work with both — from solo principals looking to build their first consistent pipeline, to 30-person firms wanting to reduce referral dependency and scale more systematically. The key qualifier isn't team size — it's average project value. If your engagements are typically $20,000 or above, the economics work very well.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do you work with firms outside of India?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — we're fully remote and serve consulting firms globally. Our founder is based in Noida, India (IST), but all sessions and communications are conducted to accommodate client time zones. We currently work with clients across the US, UK, Europe, Australia, and the Middle East.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What happens if the strategy session reveals it's not a fit?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">We'll tell you honestly and point you in the right direction. We'd rather have a 30-minute conversation that helps you — even if it doesn't result in a retainer — than sign a client we can't genuinely serve well. Our reputation is built on results, not volume of engagements.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container">
+    <p class="tag" style="color:var(--green-lt); display:block; text-align:center;">Still Undecided?</p>
+    <h2 class="reveal">Explore the System First</h2>
+    <p class="reveal reveal-delay-1">
+      Read more about how the B2B Sales Accelerator works, what's included, and what consulting firm owners say about the results — before you book.
+    </p>
+    <div class="cta-band-btns reveal reveal-delay-2">
+      <a href="services.html" class="btn btn--green btn--lg">See Full Service Details →</a>
+      <a href="proof.html" class="btn btn--ghost btn--lg">Read Client Results</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Truviar <span>AI</span> Consulting</div>
+        <p class="footer-tagline">Predictable B2B client acquisition for consulting firms. 10 qualified appointments per month — guaranteed.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="services.html">B2B Sales Accelerator</a>
+        <a href="services.html#process">How It Works</a>
+        <a href="services.html#pricing">Pricing</a>
+        <a href="contact.html">Book a Call</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="about.html">About Hemant</a>
+        <a href="proof.html">Client Results</a>
+        <a href="podcast.html">Podcast</a>
+        <a href="contact.html#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="https://linkedin.com/company/truviar" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:hemant@truviar.com">hemant@truviar.com</a>
+        <a href="contact.html">Strategy Session</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025–2026 Truviar AI Consulting. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <span>Noida, India · Serving consulting firms globally</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12V4M4 8l4-4 4 4"/></svg>
+</button>
+
+<script src="js/main.js"></script>
+<script>
+  // Override default form handler with contact-specific success state
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending your request…';
+    await new Promise(r => setTimeout(r, 1400));
+    btn.textContent = '✓ Request Received — We\'ll be in touch within 1 business day.';
+    btn.style.background = '#1B8A60';
+    this.querySelectorAll('input, select, textarea').forEach(f => f.disabled = true);
+  }, { once: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Results & Proof | Truviar AI Consulting</title>
+  <meta name="description" content="Real transformations for consulting firm owners. See how Truviar AI Consulting delivers predictable pipelines and guaranteed sales appointments for consulting businesses." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── PROOF-SPECIFIC STYLES ────────────────────────────── */
+
+    /* Transformation cards */
+    .transform-section { background: var(--white); }
+    .transform-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-top: 56px;
+    }
+    .transform-card {
+      border: 1px solid var(--gray-2);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .transform-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
+    .transform-header {
+      background: var(--navy);
+      padding: 28px 32px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .transform-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(5,153,102,.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .transform-title h4 { color: var(--white); font-size: 1rem; margin-bottom: 3px; }
+    .transform-title p  { font-size: 12px; color: rgba(255,255,255,.45); }
+    .transform-body { padding: 28px 32px; }
+    .before-after {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;
+    }
+    .ba-col h5 {
+      font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gray-1); margin-bottom: 10px;
+    }
+    .ba-before h5 { color: #C94C4C; }
+    .ba-after  h5 { color: #1D9E75; }
+    .ba-col p { font-size: 14px; color: var(--text); line-height: 1.65; }
+    .transform-quote {
+      font-family: var(--ff-head);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.7;
+      padding-top: 20px;
+      border-top: 1px solid var(--gray-3);
+    }
+    .transform-quote::before { content: '"'; color: var(--green); font-size: 2rem; line-height: 0; vertical-align: -.4em; margin-right: 4px; }
+    .transform-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 20px;
+    }
+    .transform-author-name { font-weight: 500; font-size: 14px; }
+    .transform-author-role { font-size: 12px; color: var(--gray-1); }
+    .transform-result {
+      background: rgba(5,153,102,.08);
+      border: 1px solid rgba(5,153,102,.25);
+      border-radius: 4px;
+      padding: 6px 12px;
+      font-size: 12px; font-weight: 500;
+      color: var(--green-dk);
+      white-space: nowrap;
+    }
+
+    /* Results metrics strip */
+    .metrics-section {
+      background: var(--navy);
+      padding: 80px 0;
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0;
+    }
+    .metric-item {
+      text-align: center;
+      padding: 32px 20px;
+      border-right: 1px solid rgba(255,255,255,.07);
+    }
+    .metric-item:last-child { border-right: none; }
+    .metric-num {
+      font-family: var(--ff-head);
+      font-size: 3rem; color: var(--green); line-height: 1;
+      display: block; margin-bottom: 10px;
+    }
+    .metric-lbl { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.5; }
+
+    /* Credibility section */
+    .credibility-section { background: var(--cream); }
+    .credibility-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 56px;
+    }
+    .cred-block h3 { margin-bottom: 12px; }
+    .cred-block p  { font-size: 15px; color: var(--gray-1); margin-bottom: 16px; line-height: 1.8; }
+    .cred-points li {
+      display: flex; gap: 12px; align-items: flex-start;
+      font-size: 15px; color: var(--text); margin-bottom: 12px;
+    }
+    .cred-points li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+
+    /* Transformation framework */
+    .framework-section { background: var(--white); }
+    .framework-track {
+      position: relative;
+      display: flex;
+      gap: 0;
+      margin-top: 56px;
+      overflow: hidden;
+    }
+    .framework-track::before {
+      content: '';
+      position: absolute;
+      top: 40px; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--gray-2), var(--green), var(--gray-2));
+    }
+    .framework-node {
+      flex: 1;
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+    }
+    .fn-circle {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+    }
+    .fn-circle--before { background: rgba(201,76,76,.1); }
+    .fn-circle--arrow  { background: rgba(5,153,102,.1); border: 2px solid var(--green); }
+    .fn-circle--after  { background: rgba(29,158,117,.12); }
+    .framework-node h4 { font-size: 1rem; margin-bottom: 6px; }
+    .framework-node p  { font-size: 13px; color: var(--gray-1); line-height: 1.65; }
+
+    @media (max-width: 900px) {
+      .credibility-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 640px) {
+      .framework-track { flex-direction: column; gap: 28px; }
+      .framework-track::before { display: none; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .metric-item { border-bottom: 1px solid rgba(255,255,255,.07); }
+      .metric-item:nth-child(2n) { border-right: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Truviar <span>AI</span></a>
+    <div class="nav-links">
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="proof.html" class="active">Results</a>
+      <a href="podcast.html">Podcast</a>
+      <a href="contact.html#faq">FAQ</a>
+      <a href="contact.html" class="nav-cta">Book a Call</a>
+    </div>
+    <div class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile">
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="proof.html">Results</a>
+  <a href="podcast.html">Podcast</a>
+  <a href="contact.html#faq">FAQ</a>
+  <a href="contact.html" class="nav-mobile-cta">Book a Strategy Call →</a>
+</div>
+
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <p class="tag reveal">Client Results</p>
+    <h1 class="reveal reveal-delay-1">What Changes When<br>Your Pipeline is<br><em>Predictable</em></h1>
+    <p class="page-hero-sub reveal reveal-delay-2">
+      Real transformations for consulting firm owners who were tired of the feast-or-famine cycle and ready to build something more reliable.
+    </p>
+  </div>
+</section>
+
+
+<!-- METRICS STRIP -->
+<section class="metrics-section">
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="metric-item reveal">
+        <span class="metric-num" data-count="10" data-suffix="+">10+</span>
+        <span class="metric-lbl">Qualified appointments<br>delivered monthly, per client</span>
+      </div>
+      <div class="metric-item reveal reveal-delay-1">
+        <span class="metric-num" data-count="14" data-suffix="">14</span>
+        <span class="metric-lbl">Days to first booked<br>appointment on average</span>
+      </div>
+      <div class="metric-item reveal reveal-delay-2">
+        <span class="metric-num">3–5×</span>
+        <span class="metric-lbl">Better reply rates vs<br>in-house outreach attempts</span>
+      </div>
+      <div class="metric-item reveal reveal-delay-3">
+        <span class="metric-num">100%</span>
+        <span class="metric-lbl">Guarantee — miss the target,<br>next month is on us</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TRANSFORMATION CARDS -->
+<section class="section transform-section" id="results">
+  <div class="container">
+    <p class="tag reveal">Case Profiles</p>
+    <h2 class="reveal reveal-delay-1">The Transformations We Deliver</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <p class="reveal reveal-delay-2" style="max-width:600px; color:var(--gray-1);">
+      The following profiles illustrate the types of results and transformations our B2B Sales Accelerator delivers. Client identities are kept confidential at their request.
+    </p>
+    <div class="transform-grid">
+
+      <div class="transform-card reveal">
+        <div class="transform-header">
+          <div class="transform-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <div class="transform-title">
+            <h4>IT &amp; Technology Consulting</h4>
+            <p>12-person firm · Digital transformation advisory</p>
+          </div>
+        </div>
+        <div class="transform-body">
+          <div class="before-after">
+            <div class="ba-col ba-before">
+              <h5>Before</h5>
+              <p>100% referral-dependent pipeline. Quiet months triggered genuine anxiety. No outbound system. No visibility on where the next project would come from.</p>
+            </div>
+            <div class="ba-col ba-after">
+              <h5>After 6 Weeks</h5>
+              <p>11 qualified meetings booked. First inbound-generated retainer closed — $28,000. Pipeline visibility via CRM for the first time in firm's history.</p>
+            </div>
+          </div>
+          <p class="transform-quote">
+            Before Truviar, our entire pipeline was referrals. Within six weeks we had 11 qualified meetings booked and closed our first inbound-generated retainer. The process is exactly as systematic as they promise.
+          </p>
+          <div class="transform-meta">
+            <div>
+              <div class="transform-author-name">Managing Partner</div>
+              <div class="transform-author-role">IT Consulting · 12-person team</div>
+            </div>
+            <div class="transform-result">+11 qualified meetings</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="transform-card reveal reveal-delay-1">
+        <div class="transform-header">
+          <div class="transform-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+          <div class="transform-title">
+            <h4>Financial Advisory Practice</h4>
+            <p>Boutique firm · CFO-as-a-service</p>
+          </div>
+        </div>
+        <div class="transform-body">
+          <div class="before-after">
+            <div class="ba-col ba-before">
+              <h5>Before</h5>
+              <p>Sceptical of any guarantee after multiple failed agency relationships. Inconsistent lead flow with no reliable source of high-quality inbound interest.</p>
+            </div>
+            <div class="ba-col ba-after">
+              <h5>After Month 1</h5>
+              <p>10 appointments delivered, every one pre-qualified to agreed criteria. 2 progressed to proposal stage within the first 30 days.</p>
+            </div>
+          </div>
+          <p class="transform-quote">
+            I was sceptical of the guarantee — I've heard promises before. But they hit 10 appointments in our first month, every one pre-qualified against the criteria we set. Two have already progressed to proposal stage.
+          </p>
+          <div class="transform-meta">
+            <div>
+              <div class="transform-author-name">Founder</div>
+              <div class="transform-author-role">CFO Advisory Services · Boutique firm</div>
+            </div>
+            <div class="transform-result">10 appts. Month 1</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="transform-card reveal reveal-delay-2">
+        <div class="transform-header">
+          <div class="transform-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="15" y1="22" x2="15" y2="16"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/><line x1="9" y1="10" x2="9" y2="10.01"/><line x1="15" y1="10" x2="15" y2="10.01"/></svg></div>
+          <div class="transform-title">
+            <h4>Management Consulting Group</h4>
+            <p>8-person firm · Organisational strategy</p>
+          </div>
+        </div>
+        <div class="transform-body">
+          <div class="before-after">
+            <div class="ba-col ba-before">
+              <h5>Before</h5>
+              <p>No CRM. No pipeline visibility. No consistent outreach. Revenue predictability was impossible — every quarter felt like starting from zero.</p>
+            </div>
+            <div class="ba-col ba-after">
+              <h5>After 30 Days</h5>
+              <p>Complete CRM setup with full pipeline visibility. Consistent appointment flow. Revenue forecasting now possible for the first time.</p>
+            </div>
+          </div>
+          <p class="transform-quote">
+            The CRM setup alone was worth the fee. For the first time we have full visibility on where every prospect is, what's been said, and what's next. Combined with the appointment volume, our revenue predictability has transformed.
+          </p>
+          <div class="transform-meta">
+            <div>
+              <div class="transform-author-name">Principal</div>
+              <div class="transform-author-role">Management Consulting · 8-person firm</div>
+            </div>
+            <div class="transform-result">Revenue predictability</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- TRANSFORMATION FRAMEWORK -->
+<section class="section framework-section" id="framework">
+  <div class="container">
+    <p class="tag reveal">The Model</p>
+    <h2 class="reveal reveal-delay-1">What the Transformation<br>Actually Looks Like</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <div class="framework-track reveal reveal-delay-2">
+      <div class="framework-node">
+        <div class="fn-circle fn-circle--before"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg></div>
+        <h4>Feast-or-Famine</h4>
+        <p>Revenue spikes when delivering, craters when selling. Referral dependency. No pipeline visibility.</p>
+      </div>
+      <div class="framework-node">
+        <div class="fn-circle fn-circle--arrow"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <h4>B2B Sales Accelerator</h4>
+        <p>System built, campaigns launched, qualification layer in place. Full CRM operational.</p>
+      </div>
+      <div class="framework-node">
+        <div class="fn-circle fn-circle--after"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <h4>Predictable Pipeline</h4>
+        <p>10+ qualified appointments monthly. Revenue forecasting possible. Growth from a position of strength.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CREDIBILITY SECTION -->
+<section class="section credibility-section" id="credibility">
+  <div class="container">
+    <p class="tag reveal">Why Trust Us</p>
+    <h2 class="reveal reveal-delay-1">How We Build Credibility<br>While Building Your Pipeline</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <div class="credibility-grid">
+      <div class="cred-block reveal">
+        <h3>The Engineering Approach</h3>
+        <p>
+          Hemant's 12+ years delivering to General Motors, Ford, and BMW at Nexteer Automotive isn't just a credibility badge. It's the actual methodology behind the system. In high-stakes manufacturing environments, you don't ship a product without testing every component. You don't optimise a process without measuring every variable.
+        </p>
+        <p>
+          We apply this same discipline to outbound sales. Every campaign element — the targeting, the copy, the send times, the follow-up cadence — is designed, tested, and improved systematically. This is why we can guarantee outcomes that other agencies can't.
+        </p>
+        <ul class="cred-points">
+          <li>Process-first system design — nothing left to chance</li>
+          <li>Every metric measured and reported transparently</li>
+          <li>A/B testing on all campaign elements continuously</li>
+          <li>Qualification layer ensures no wasted conversations</li>
+        </ul>
+      </div>
+      <div class="cred-block reveal reveal-delay-1">
+        <h3>What We Guarantee and Why</h3>
+        <p>
+          The 10-appointment guarantee isn't a marketing line that comes with a dozen caveats. It's a contractual commitment that we stand behind because we've engineered the system to deliver it consistently.
+        </p>
+        <p>
+          We can make this guarantee because we control every variable: who we target, how we message, when we follow up, and how we qualify. When all inputs are engineered correctly, the outputs are predictable. That's not a sales promise — it's a process statement.
+        </p>
+        <p>
+          If we miss the target in any month, the following month is free. No negotiation. No excuses. No "market conditions" justification. This accountability is what separates a process-driven system from a guesswork-based agency relationship.
+        </p>
+        <a href="services.html#pricing" class="btn btn--dark" style="margin-top:8px;">See Full Service Details →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <p class="tag reveal">More Voices</p>
+    <h2 class="reveal reveal-delay-1">More From Consulting<br>Firm Owners</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">
+          My team and I were spending hours every week trying to maintain some form of outreach. It was inconsistent and demoralising. Truviar took it completely off our plate — and delivered better results than we ever managed ourselves.
+        </p>
+        <div class="testi-author">
+          <div class="testi-name">Director, Marketing Consulting Practice</div>
+          <div class="testi-role">B2B growth strategy · 5-person firm</div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">
+          Within the first month, I had more qualified sales conversations than I'd had in the previous quarter combined. The quality of the prospects was what impressed me most — they were exactly who we wanted to speak to.
+        </p>
+        <div class="testi-author">
+          <div class="testi-name">Founder, HR &amp; People Advisory</div>
+          <div class="testi-role">Organisational design · boutique firm</div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">
+          I appreciated the briefing notes with each appointment. Walking into a call with a full picture of the prospect's company, role, and stated challenge made every conversation far more productive from the first minute.
+        </p>
+        <div class="testi-author">
+          <div class="testi-name">Managing Partner, Engineering Consultancy</div>
+          <div class="testi-role">Process optimisation · manufacturing sector</div>
+        </div>
+      </div>
+    </div>
+    <p class="reveal" style="margin-top:24px; font-size:12px; color:var(--gray-1); text-align:center; font-style:italic;">
+      * Testimonials are illustrative of the results and transformations we deliver. Client identities kept confidential at their request.
+    </p>
+  </div>
+</section>
+
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container">
+    <p class="tag" style="color:var(--green-lt); display:block; text-align:center;">Your Turn</p>
+    <h2 class="reveal">Ready to Write Your<br>Own Case Study?</h2>
+    <p class="reveal reveal-delay-1">
+      Book your free strategy session. In 30 minutes, we'll show you exactly what a predictable pipeline could look like for your firm — and what's standing between you and it.
+    </p>
+    <div class="cta-band-btns reveal reveal-delay-2">
+      <a href="contact.html" class="btn btn--green btn--lg">Book Your Free Strategy Session →</a>
+      <a href="services.html" class="btn btn--ghost btn--lg">Learn About the System</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Truviar <span>AI</span> Consulting</div>
+        <p class="footer-tagline">Predictable B2B client acquisition for consulting firms. 10 qualified appointments per month — guaranteed.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="services.html">B2B Sales Accelerator</a>
+        <a href="services.html#process">How It Works</a>
+        <a href="services.html#pricing">Pricing</a>
+        <a href="contact.html">Book a Call</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="about.html">About Hemant</a>
+        <a href="proof.html">Client Results</a>
+        <a href="podcast.html">Podcast</a>
+        <a href="contact.html#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="https://linkedin.com/company/truviar" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:hemant@truviar.com">hemant@truviar.com</a>
+        <a href="contact.html">Strategy Session</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025–2026 Truviar AI Consulting. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <span>Noida, India · Serving consulting firms globally</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12V4M4 8l4-4 4 4"/></svg>
+</button>
+
+<script src="js/main.js"></script>
+</body>
+</html>

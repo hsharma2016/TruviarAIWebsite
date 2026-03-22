@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Consulting Growth Blueprint Podcast | Truviar AI Consulting</title>
+  <meta name="description" content="The Consulting Growth Blueprint — a podcast for consulting firm owners who want predictable, scalable growth. Inaugural season coming soon. Apply to be a guest." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── PODCAST-SPECIFIC STYLES ──────────────────────────── */
+
+    /* Podcast hero card */
+    .podcast-card-wrap {
+      background: var(--navy);
+      padding: 80px 0;
+    }
+    .podcast-main-card {
+      display: flex; gap: 64px; align-items: center;
+      flex-wrap: wrap;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .podcast-art-lg {
+      flex-shrink: 0;
+      width: 220px; height: 220px;
+      background: var(--navy-2);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(5,153,102,.3);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; gap: 10px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+    .podcast-art-lg-icon { display: flex; align-items: center; justify-content: center; }
+    .podcast-art-lg-lbl {
+      font-size: 10px; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--green);
+    }
+    .podcast-art-lg-title {
+      font-family: var(--ff-head); font-size: 1rem;
+      color: var(--white); margin-top: 4px; line-height: 1.3;
+    }
+    .podcast-copy { flex: 1; min-width: 280px; }
+    .podcast-copy h2 { color: var(--white); font-size: clamp(1.8rem, 3vw, 2.6rem); }
+    .podcast-copy p  { color: rgba(255,255,255,.62); margin-top: 16px; font-size: 1.05rem; line-height: 1.8; }
+    .podcast-copy-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .podcast-badge {
+      font-size: 11px; padding: 5px 14px;
+      border: 1px solid rgba(5,153,102,.35);
+      border-radius: 20px; color: var(--green-lt);
+    }
+    .podcast-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+    /* Coming soon section */
+    .coming-soon-section { background: var(--cream); }
+    .coming-soon-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .cs-visual {
+      background: var(--navy);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(5,153,102,.08) 0%, transparent 70%);
+    }
+    .cs-progress-wrap { margin: 24px 0; }
+    .cs-progress-label {
+      display: flex; justify-content: space-between;
+      font-size: 12px; color: rgba(255,255,255,.5); margin-bottom: 8px;
+    }
+    .cs-progress-bar {
+      height: 4px; border-radius: 2px;
+      background: rgba(255,255,255,.12);
+      overflow: hidden;
+    }
+    .cs-progress-fill {
+      height: 100%; border-radius: 2px;
+      background: var(--green);
+      width: 65%;
+    }
+    .cs-episodes {
+      display: flex; flex-direction: column; gap: 12px;
+      margin-top: 32px; text-align: left;
+    }
+    .cs-ep {
+      background: var(--navy-2);
+      border: 1px solid rgba(5,153,102,.1);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .cs-ep-icon { display: flex; align-items: center; flex-shrink: 0; }
+    .cs-ep-title { font-size: 13.5px; color: rgba(255,255,255,.7); flex: 1; }
+    .cs-ep-status { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--green); flex-shrink: 0; }
+
+    .cs-copy h3 { margin-bottom: 12px; }
+    .cs-copy p  { font-size: 15px; color: var(--gray-1); margin-bottom: 16px; line-height: 1.8; }
+    .notify-form {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px;
+    }
+    .notify-form input {
+      flex: 1; min-width: 200px;
+      padding: 13px 16px;
+      border: 1px solid var(--gray-2);
+      border-radius: var(--radius-sm);
+      font-family: var(--ff-body); font-size: 15px;
+      outline: none; transition: border-color .2s;
+    }
+    .notify-form input:focus { border-color: var(--green); }
+
+    /* Topics section */
+    .topics-section { background: var(--white); }
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .topic-card {
+      padding: 28px;
+      border: 1px solid var(--gray-2);
+      border-radius: var(--radius);
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .topic-card:hover {
+      border-color: rgba(5,153,102,.4);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(5,153,102,.1);
+    }
+    .topic-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: var(--green-tint, #E8F5EF); margin-bottom: 14px; }
+    .topic-card h4 { margin-bottom: 8px; }
+    .topic-card p  { font-size: 14px; color: var(--gray-1); line-height: 1.7; }
+
+    /* Guest section */
+    .guest-section {
+      background: var(--navy);
+      padding: 104px 0;
+    }
+    .guest-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .guest-copy h2 { color: var(--white); }
+    .guest-copy p  { color: rgba(255,255,255,.62); margin-top: 16px; font-size: 1.05rem; line-height: 1.8; }
+    .guest-criteria { margin: 28px 0; }
+    .guest-criteria li {
+      display: flex; gap: 12px; align-items: flex-start;
+      font-size: 15px; color: rgba(255,255,255,.75);
+      margin-bottom: 12px;
+    }
+    .guest-criteria li::before { content: '→'; color: var(--green); flex-shrink: 0; }
+    .guest-form-card {
+      background: var(--navy-2);
+      border: 1px solid rgba(5,153,102,.2);
+      border-radius: var(--radius-lg);
+      padding: 40px 36px;
+    }
+    .guest-form-card h3 { color: var(--white); margin-bottom: 24px; font-size: 1.3rem; }
+    .guest-form-card .form-group { margin-bottom: 16px; }
+
+    @media (max-width: 900px) {
+      .coming-soon-inner { grid-template-columns: 1fr; gap: 48px; }
+      .guest-inner { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 640px) {
+      .podcast-main-card { gap: 36px; }
+      .podcast-art-lg { width: 160px; height: 160px; }
+      .podcast-art-lg-icon { display: flex; align-items: center; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Truviar <span>AI</span></a>
+    <div class="nav-links">
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="proof.html">Results</a>
+      <a href="podcast.html" class="active">Podcast</a>
+      <a href="contact.html#faq">FAQ</a>
+      <a href="contact.html" class="nav-cta">Book a Call</a>
+    </div>
+    <div class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile">
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="proof.html">Results</a>
+  <a href="podcast.html">Podcast</a>
+  <a href="contact.html#faq">FAQ</a>
+  <a href="contact.html" class="nav-mobile-cta">Book a Strategy Call →</a>
+</div>
+
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <p class="tag reveal">New Podcast</p>
+    <h1 class="reveal reveal-delay-1">The Consulting<br><em>Growth Blueprint</em></h1>
+    <p class="page-hero-sub reveal reveal-delay-2">
+      Conversations with consulting firm owners, managing partners, and principals on what it actually takes to scale beyond the referral plateau and build lasting, repeatable revenue.
+    </p>
+  </div>
+</section>
+
+
+<!-- PODCAST CARD -->
+<section class="podcast-card-wrap" id="podcast">
+  <div class="container">
+    <div class="podcast-main-card">
+      <div class="podcast-art-lg reveal">
+        <div class="podcast-art-lg-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
+        <div class="podcast-art-lg-lbl">Coming Soon</div>
+        <div class="podcast-art-lg-title">The Consulting<br>Growth Blueprint</div>
+      </div>
+      <div class="podcast-copy reveal reveal-delay-1">
+        <p class="tag" style="color:var(--green-lt);">The Consulting Growth Blueprint</p>
+        <h2>Honest Conversations.<br>Real Strategies. Predictable Growth.</h2>
+        <p>
+          Each episode features in-depth conversations with the leaders of successful consulting firms — sharing the real strategies, hard lessons, and breakthrough moments behind their growth. No theory. No platitudes. Just what actually works.
+        </p>
+        <div class="podcast-copy-badges">
+          <span class="podcast-badge">AI in Consulting</span>
+          <span class="podcast-badge">Sales Automation</span>
+          <span class="podcast-badge">Scaling Your Firm</span>
+          <span class="podcast-badge">Predictable Client Acquisition</span>
+          <span class="podcast-badge">Business Development</span>
+          <span class="podcast-badge">Referral Independence</span>
+        </div>
+        <div class="podcast-ctas">
+          <a href="#notify" class="btn btn--green">Notify Me at Launch →</a>
+          <a href="#guest" class="btn btn--ghost">Apply to Be a Guest</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- COMING SOON -->
+<section class="section coming-soon-section" id="coming-soon">
+  <div class="container">
+    <div class="coming-soon-inner">
+      <div class="cs-visual reveal">
+        <p style="font-family:var(--ff-head); font-size:1rem; color:var(--green-lt); margin-bottom:6px; letter-spacing:.05em;">Inaugural Season</p>
+        <h3 style="color:var(--white); margin-bottom:4px;">Currently in Production</h3>
+        <p style="font-size:13px; color:rgba(255,255,255,.45); margin-bottom:20px;">Recording &amp; editing in progress</p>
+        <div class="cs-progress-wrap">
+          <div class="cs-progress-label">
+            <span>Production progress</span><span>65%</span>
+          </div>
+          <div class="cs-progress-bar"><div class="cs-progress-fill"></div></div>
+        </div>
+        <div class="cs-episodes">
+          <div class="cs-ep">
+            <div class="cs-ep-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
+            <div class="cs-ep-title">Escaping the Referral Trap</div>
+            <div class="cs-ep-status">Recorded</div>
+          </div>
+          <div class="cs-ep">
+            <div class="cs-ep-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
+            <div class="cs-ep-title">Building a Scalable Sales System</div>
+            <div class="cs-ep-status">Recorded</div>
+          </div>
+          <div class="cs-ep">
+            <div class="cs-ep-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
+            <div class="cs-ep-title">AI Tools That Actually Drive Revenue</div>
+            <div class="cs-ep-status">In editing</div>
+          </div>
+          <div class="cs-ep">
+            <div class="cs-ep-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
+            <div class="cs-ep-title">Hiring Your First BD Resource</div>
+            <div class="cs-ep-status">Scheduled</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-copy reveal reveal-delay-1" id="notify">
+        <p class="tag">Be First to Know</p>
+        <h2>The Inaugural Season<br>Launches Soon</h2>
+        <div class="divider"></div>
+        <p>
+          We're finalising our first season of interviews with consulting firm owners and principals. When we launch, you'll get immediate access to conversations that cut through the noise and get straight to what's actually working for firm growth in 2025 and beyond.
+        </p>
+        <p>
+          Drop your email below and we'll notify you the moment the first episode goes live — plus early access to bonus content not published on streaming platforms.
+        </p>
+        <form id="notify-form" onsubmit="handleNotify(event)">
+          <div class="notify-form">
+            <input type="email" placeholder="Your email address" required id="notify-email" />
+            <button type="submit" class="btn btn--green">Notify Me</button>
+          </div>
+          <p id="notify-success" style="display:none; margin-top:12px; font-size:13px; color:#1D9E75; font-weight:500;">
+            ✓ You're on the list! We'll email you when the first episode drops.
+          </p>
+        </form>
+        <p style="margin-top:16px; font-size:12px; color:var(--gray-1);">No spam. Unsubscribe any time. We publish quality, not volume.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TOPICS -->
+<section class="section topics-section" id="topics">
+  <div class="container">
+    <p class="tag reveal">What We Cover</p>
+    <h2 class="reveal reveal-delay-1">Every Episode Explores<br>What Actually Drives Growth</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <div class="topics-grid">
+      <div class="topic-card reveal">
+        <div class="topic-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
+        <h4>AI in Consulting</h4>
+        <p>How consulting firms are using AI tools to improve delivery quality, speed, and competitive differentiation — without losing the human edge clients pay for.</p>
+      </div>
+      <div class="topic-card reveal reveal-delay-1">
+        <div class="topic-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <h4>Scaling Your Firm</h4>
+        <p>What it actually takes to grow from a one-person shop or small team to a multi-partner firm — the hires, the systems, the mindset shifts.</p>
+      </div>
+      <div class="topic-card reveal reveal-delay-2">
+        <div class="topic-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <h4>Sales Automation for Consultants</h4>
+        <p>Building outbound systems that generate a consistent flow of qualified leads — without spending your best hours on prospecting and follow-up.</p>
+      </div>
+      <div class="topic-card reveal reveal-delay-3">
+        <div class="topic-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg></div>
+        <h4>Predictable Client Acquisition</h4>
+        <p>Moving from referral dependency to a systematic, scalable pipeline — and what the journey looks like for founders who've made that transition.</p>
+      </div>
+      <div class="topic-card reveal">
+        <div class="topic-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A7 7 0 1012 19h0"/></svg></div>
+        <h4>Business Development Strategy</h4>
+        <p>Positioning, differentiation, pricing strategy, and how to build a firm that clients choose not just because you're good, but because you're right for them.</p>
+      </div>
+      <div class="topic-card reveal reveal-delay-1">
+        <div class="topic-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
+        <h4>The Founder Mindset</h4>
+        <p>The mental shifts, hard decisions, and personal operating systems behind successful consulting firm founders — the honest version, not the highlight reel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- GUEST APPLICATION -->
+<section class="guest-section" id="guest">
+  <div class="container">
+    <div class="guest-inner">
+      <div class="guest-copy reveal">
+        <p class="tag" style="color:var(--green-lt);">Be a Guest</p>
+        <h2>Share Your Story<br>with Our Audience</h2>
+        <div class="divider"></div>
+        <p>
+          The Consulting Growth Blueprint is built on the insight of practitioners — founders, managing partners, and principals who have faced the real challenges of building a consulting firm and come out stronger for it.
+        </p>
+        <p>
+          If you've built something worth talking about and believe other consulting firm owners should hear it, we'd love to have you on the show.
+        </p>
+        <h4 style="color:var(--white); margin:24px 0 12px;">Ideal guests have:</h4>
+        <ul class="guest-criteria">
+          <li>Founded or lead a consulting firm with a defined niche and client base</li>
+          <li>Overcome a meaningful growth challenge — scaling, pipeline, hiring, or positioning</li>
+          <li>Insights on client acquisition, retention, or the business of consulting</li>
+          <li>A willingness to share what worked, what didn't, and what they'd do differently</li>
+        </ul>
+        <p style="font-size:13px; color:rgba(255,255,255,.4);">
+          Guest spots provide industry visibility, a platform for your expertise, and a link back to your firm on all episode distribution channels.
+        </p>
+      </div>
+
+      <div class="guest-form-card reveal reveal-delay-1">
+        <h3>Apply to Appear on the Show</h3>
+        <form id="guest-form" onsubmit="handleGuest(event)">
+          <div class="form-group form-dark">
+            <label class="form-label">Your name *</label>
+            <input type="text" class="form-input" placeholder="Full name" required />
+          </div>
+          <div class="form-group form-dark" style="margin-top:14px;">
+            <label class="form-label">Firm name &amp; your role *</label>
+            <input type="text" class="form-input" placeholder="e.g. Acme Consulting · Managing Partner" required />
+          </div>
+          <div class="form-group form-dark" style="margin-top:14px;">
+            <label class="form-label">Email address *</label>
+            <input type="email" class="form-input" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group form-dark" style="margin-top:14px;">
+            <label class="form-label">What would you like to share on the podcast? *</label>
+            <textarea class="form-textarea form-dark" placeholder="Describe the topic, story, or insight you'd bring to our audience…" style="min-height:100px; background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.14); color:var(--white);" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--green" style="width:100%; justify-content:center; margin-top:20px; font-size:15px; padding:15px;">
+            Submit My Guest Application →
+          </button>
+          <p id="guest-success" style="display:none; margin-top:12px; font-size:13px; color:var(--green-lt); text-align:center;">
+            ✓ Application received. We'll be in touch within 3 business days.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container">
+    <p class="tag" style="color:var(--green-lt); display:block; text-align:center;">While You Wait</p>
+    <h2 class="reveal">Ready to Start Building<br>a Predictable Pipeline Today?</h2>
+    <p class="reveal reveal-delay-1">
+      The podcast launches soon. Your pipeline problem doesn't have to wait. Book a free strategy session and let's map out exactly what a consistent flow of qualified appointments could look like for your firm.
+    </p>
+    <div class="cta-band-btns reveal reveal-delay-2">
+      <a href="contact.html" class="btn btn--green btn--lg">Book Your Strategy Session →</a>
+      <a href="services.html" class="btn btn--ghost btn--lg">Explore the B2B Sales Accelerator</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Truviar <span>AI</span> Consulting</div>
+        <p class="footer-tagline">Predictable B2B client acquisition for consulting firms. 10 qualified appointments per month — guaranteed.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="services.html">B2B Sales Accelerator</a>
+        <a href="services.html#process">How It Works</a>
+        <a href="services.html#pricing">Pricing</a>
+        <a href="contact.html">Book a Call</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="about.html">About Hemant</a>
+        <a href="proof.html">Client Results</a>
+        <a href="podcast.html">Podcast</a>
+        <a href="contact.html#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="https://linkedin.com/company/truviar" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:hemant@truviar.com">hemant@truviar.com</a>
+        <a href="contact.html">Strategy Session</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025–2026 Truviar AI Consulting. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <span>Noida, India · Serving consulting firms globally</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12V4M4 8l4-4 4 4"/></svg>
+</button>
+
+<script src="js/main.js"></script>
+<script>
+  function handleNotify(e) {
+    e.preventDefault();
+    document.getElementById('notify-form').querySelector('button').textContent = '✓ You\'re on the list!';
+    document.getElementById('notify-success').style.display = 'block';
+  }
+  function handleGuest(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = '✓ Application Submitted!';
+    btn.style.background = '#1D9E75';
+    btn.disabled = true;
+    document.getElementById('guest-success').style.display = 'block';
+  }
+</script>
+</body>
+</html>

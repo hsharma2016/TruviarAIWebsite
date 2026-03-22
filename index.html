@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Truviar AI Consulting | 10 Qualified Sales Appointments. Guaranteed.</title>
+  <meta name="description" content="Truviar AI Consulting delivers a predictable pipeline of 10 qualified B2B sales appointments per month for consulting firms — guaranteed. Stop the feast-or-famine cycle today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── HOME-SPECIFIC STYLES ─────────────────────────────── */
+    .hero {
+      background: var(--navy);
+      padding: 164px 0 120px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 65% at 78% 45%, rgba(5,153,102,.09) 0%, transparent 65%),
+        radial-gradient(ellipse 30% 30% at 10% 80%, rgba(5,153,102,.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    /* Subtle animated grid overlay */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(5,153,102,.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(5,153,102,.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block; width: 32px; height: 1px;
+      background: var(--green); flex-shrink: 0;
+    }
+
+    .hero h1 { color: var(--white); max-width: 840px; position: relative; z-index: 1; }
+    .hero h1 em { font-style: italic; color: var(--green); }
+
+    .hero-sub {
+      margin-top: 24px;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.62);
+      max-width: 560px;
+      line-height: 1.8;
+      position: relative; z-index: 1;
+    }
+    .hero-cta {
+      margin-top: 44px;
+      display: flex; gap: 14px; flex-wrap: wrap;
+      position: relative; z-index: 1;
+    }
+
+    .hero-proof {
+      margin-top: 72px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      display: flex; gap: 56px; flex-wrap: wrap;
+      position: relative; z-index: 1;
+    }
+    .hero-stat-num {
+      font-family: var(--ff-head);
+      font-size: 3rem; color: var(--green); line-height: 1;
+    }
+    .hero-stat-lbl { font-size: 13px; color: rgba(255,255,255,.5); margin-top: 8px; }
+
+    /* ── Pain section ──────────────────────────────────────── */
+    .pain-section { background: var(--white); }
+    .pain-intro   { max-width: 600px; }
+
+    /* ── Solution section ──────────────────────────────────── */
+    .solution-section { background: var(--navy); padding: 104px 0; }
+    .solution-section .tag { color: var(--green-lt); }
+
+    /* ── Social proof strip ────────────────────────────────── */
+    .proof-strip { background: var(--cream); }
+
+    /* ── Process mini ──────────────────────────────────────── */
+    .process-mini { background: var(--white); }
+    .process-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      margin-top: 56px;
+      border: 1px solid var(--gray-2);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .mini-step {
+      padding: 36px 28px;
+      border-right: 1px solid var(--gray-2);
+      transition: background .2s;
+      position: relative;
+    }
+    .mini-step:last-child { border-right: none; }
+    .mini-step:hover { background: var(--cream); }
+    .mini-step-num {
+      font-family: var(--ff-head); font-size: 2rem; color: var(--green); line-height: 1; margin-bottom: 14px;
+    }
+    .mini-step h4  { margin-bottom: 8px; }
+    .mini-step p   { font-size: 13.5px; color: var(--gray-1); line-height: 1.7; }
+
+    /* ── Final CTA ─────────────────────────────────────────── */
+    .home-final-cta {
+      background: var(--navy);
+      padding: 100px 0;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .home-final-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(5,153,102,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .home-final-cta h2 { color: var(--white); }
+    .home-final-cta p  { color: rgba(255,255,255,.55); font-size: 1.05rem; margin: 16px auto 0; max-width: 520px; }
+
+    @media (max-width: 640px) {
+      .hero { padding: 128px 0 80px; }
+      .hero-proof { gap: 32px; }
+      .process-mini-grid { grid-template-columns: 1fr; }
+      .mini-step { border-right: none; border-bottom: 1px solid var(--gray-2); }
+      .mini-step:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Truviar <span>AI</span></a>
+    <div class="nav-links">
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="proof.html">Results</a>
+      <a href="podcast.html">Podcast</a>
+      <a href="contact.html#faq">FAQ</a>
+      <a href="contact.html" class="nav-cta">Book a Call</a>
+    </div>
+    <div class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-mobile">
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="proof.html">Results</a>
+  <a href="podcast.html">Podcast</a>
+  <a href="contact.html#faq">FAQ</a>
+  <a href="contact.html" class="nav-mobile-cta">Book a Strategy Call →</a>
+</div>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <p class="hero-eyebrow reveal">B2B Sales Accelerator for Consulting Firms</p>
+    <h1 class="reveal reveal-delay-1">
+      Stop Chasing Projects.<br>
+      Start <em>Choosing</em> Your Clients.
+    </h1>
+    <p class="hero-sub reveal reveal-delay-2">
+      Truviar AI Consulting builds and operates a complete outbound sales engine for your firm — delivering a predictable flow of pre-qualified sales appointments to your calendar every month.
+    </p>
+    <div class="hero-cta reveal reveal-delay-3">
+      <a href="contact.html" class="btn btn--green btn--lg">
+        Book Your Strategy Session
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <a href="services.html" class="btn btn--ghost btn--lg">See How It Works</a>
+    </div>
+    <div class="hero-proof reveal reveal-delay-4">
+      <div>
+        <div class="hero-stat-num" data-count="10" data-suffix="">10</div>
+        <div class="hero-stat-lbl">Qualified appointments<br>guaranteed every month</div>
+      </div>
+      <div>
+        <div class="hero-stat-num" data-count="30" data-suffix="">30</div>
+        <div class="hero-stat-lbl">Days to a full<br>pipeline</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">0</div>
+        <div class="hero-stat-lbl">Risk — miss the target,<br>next month is free</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TRUST BAR -->
+<div class="trustbar">
+  <div class="trustbar-inner">
+    <span class="trustbar-lbl">Founder's background</span>
+    <div class="trust-sep"></div>
+    <span class="trust-logo">Nexteer Automotive · Clients: GM, Ford, BMW</span>
+    <div class="trust-sep"></div>
+    <span class="trustbar-lbl">12+ Years Mechanical Engineering</span>
+  </div>
+</div>
+
+
+<!-- PAIN SECTION -->
+<section class="section pain-section" id="problem">
+  <div class="container">
+    <p class="tag reveal">Sound Familiar?</p>
+    <h2 class="reveal reveal-delay-1">The Hidden Cost of an<br>Inconsistent Pipeline</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <p class="reveal reveal-delay-2" style="max-width:620px; color:var(--gray-1);">
+      Your expertise delivers real results for clients. But between engagements, revenue stalls — because landing the next project depends on word-of-mouth, luck, or exhausting manual prospecting. There's a better way.
+    </p>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg></div>
+        <h3>The Feast-or-Famine Cycle</h3>
+        <p>Revenue peaks when you're delivering, then craters when you're selling. You're always catching up — never building ahead. This unpredictability makes it impossible to hire, invest, or grow.</p>
+      </div>
+      <div class="pain-card reveal reveal-delay-1">
+        <div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg></div>
+        <h3>Referral Dependency</h3>
+        <p>Referrals are wonderful — but unpredictable. Your pipeline shouldn't hinge on whether a past client happened to mention your name at the right moment.</p>
+      </div>
+      <div class="pain-card reveal reveal-delay-2">
+        <div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>No Time to Prospect</h3>
+        <p>You're the expert, the delivery manager, and the salesperson — simultaneously. Consistent outreach falls through the cracks the moment a client engagement heats up.</p>
+      </div>
+      <div class="pain-card reveal reveal-delay-3">
+        <div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg></div>
+        <h3>Wrong Conversations</h3>
+        <p>When leads do arrive, too many are budget shoppers or poor fits. You invest hours in discovery calls that never convert, draining time you can't afford to lose.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SOLUTION SECTION -->
+<section class="solution-section" id="services">
+  <div class="container">
+    <p class="tag reveal">The B2B Sales Accelerator</p>
+    <h2 class="reveal reveal-delay-1" style="color:var(--white);">Your Dedicated Pipeline Engine<br>— Running 24 / 7</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <p class="reveal reveal-delay-2" style="max-width:620px; color:rgba(255,255,255,.6);">
+      We build, operate, and optimise a complete outbound sales system for your consulting firm. You get qualified decision-makers on your calendar — every month, guaranteed.
+    </p>
+    <div class="solution-grid">
+      <div class="step-card reveal">
+        <div class="step-num">01</div>
+        <h3>Ideal Client Profiling</h3>
+        <p>We define your perfect-fit client — sector, company size, decision-maker title, pain profile — and build verified prospect lists targeting exactly them.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <h3>Multi-Channel Outreach</h3>
+        <p>Precision email sequences and LinkedIn campaigns craft a compelling, personalised message that earns replies from busy executives.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <h3>AI-Powered Follow-Up</h3>
+        <p>Intelligent follow-up sequences ensure no warm lead goes cold. We maintain the cadence so your pipeline never stalls.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <h3>BANT Qualification</h3>
+        <p>We screen every prospect for Budget, Authority, Need, and Timeline before they ever appear on your calendar. No tyre-kickers, ever.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-4">
+        <div class="step-num">05</div>
+        <h3>CRM Integration</h3>
+        <p>Full visibility into your pipeline. Every contact, touchpoint, and outcome — tracked, reported, and optimised monthly.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">06</div>
+        <h3>Continuous Optimisation</h3>
+        <p>A/B testing on messaging and sequences every cycle — so reply rates improve and cost-per-appointment trends down over time.</p>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top:56px; text-align:center;">
+      <a href="services.html" class="btn btn--green btn--lg">Explore the Full System →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- GUARANTEE SECTION -->
+<section class="guarantee-section" id="guarantee">
+  <div class="container">
+    <div class="guarantee-inner">
+      <div class="guarantee-badge reveal">
+        <span class="badge-num">10</span>
+        <span class="badge-lbl">Qualified<br>Appointments</span>
+      </div>
+      <div class="guarantee-copy reveal reveal-delay-2">
+        <h2>We Put Our Fee on the Line.<br>Not Yours.</h2>
+        <p>
+          Every engagement comes with a simple promise: <strong>10 qualified sales appointments on your calendar per month — or the following month is completely on us.</strong> No fine print. No "market conditions" caveats.
+        </p>
+        <p style="margin-top:12px;">
+          We make this guarantee because we've engineered every variable — the targeting, the messaging, the follow-up, the qualification layer. We control the inputs, so we stand behind the output.
+        </p>
+        <a href="contact.html" class="btn btn--dark">Hold Us to It — Book a Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROCESS MINI -->
+<section class="section process-mini" id="process">
+  <div class="container">
+    <p class="tag reveal">Getting Started</p>
+    <h2 class="reveal reveal-delay-1">From Sign-Off to Full<br>Pipeline in 30 Days</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <div class="process-mini-grid">
+      <div class="mini-step reveal">
+        <div class="mini-step-num">1</div>
+        <h4>Discovery Call</h4>
+        <p>Map your ideal client profile. Define appointment criteria. Free, no-obligation.</p>
+      </div>
+      <div class="mini-step reveal reveal-delay-1">
+        <div class="mini-step-num">2</div>
+        <h4>System Build</h4>
+        <p>Prospect database, email infrastructure, sequences, and CRM — built in 7 days.</p>
+      </div>
+      <div class="mini-step reveal reveal-delay-2">
+        <div class="mini-step-num">3</div>
+        <h4>Campaign Launch</h4>
+        <p>Outreach begins. All responses handled and screened by our team.</p>
+      </div>
+      <div class="mini-step reveal reveal-delay-3">
+        <div class="mini-step-num">4</div>
+        <h4>Appointments Land</h4>
+        <p>Pre-qualified meetings appear on your calendar, complete with prospect briefings.</p>
+      </div>
+      <div class="mini-step reveal reveal-delay-4">
+        <div class="mini-step-num">5</div>
+        <h4>Scale &amp; Optimise</h4>
+        <p>Monthly reviews, transparent reporting, continuous improvement.</p>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top:40px; text-align:center;">
+      <a href="services.html#process" class="btn btn--dark">See the Full Process →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section class="section proof-strip" id="proof">
+  <div class="container">
+    <p class="tag reveal">Client Results</p>
+    <h2 class="reveal reveal-delay-1">What Consulting Firm<br>Owners Say</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">
+          Before Truviar, our entire pipeline was referrals. Some months were great, some were genuinely scary. Within six weeks we had 11 qualified meetings booked and closed our first inbound-generated retainer.
+        </p>
+        <div class="testi-author">
+          <div class="testi-name">Managing Partner, IT Consulting Firm</div>
+          <div class="testi-role">Mid-market technology advisory · 12-person team</div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">
+          I was sceptical of the guarantee — I've heard promises before. But they hit 10 appointments in our first month, every one pre-qualified against the criteria we set. Two have already progressed to proposal stage.
+        </p>
+        <div class="testi-author">
+          <div class="testi-name">Founder, Financial Advisory Practice</div>
+          <div class="testi-role">CFO advisory services · boutique firm</div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">
+          The CRM setup alone was worth the fee. For the first time we have full visibility on where every prospect is and what's next. Combined with the appointment volume, our revenue predictability has transformed.
+        </p>
+        <div class="testi-author">
+          <div class="testi-name">Principal, Management Consulting Group</div>
+          <div class="testi-role">Organisational strategy · 8-person firm</div>
+        </div>
+      </div>
+    </div>
+    <p class="reveal" style="margin-top:28px; font-size:12px; color:var(--gray-1); text-align:center; font-style:italic;">
+      * Results are illustrative of the transformations we deliver. Client identities kept confidential at their request.
+    </p>
+    <div class="reveal" style="margin-top:32px; text-align:center;">
+      <a href="proof.html" class="btn btn--dark">View All Results →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- FINAL CTA -->
+<section class="home-final-cta">
+  <div class="container" style="position:relative; z-index:1;">
+    <p class="tag reveal" style="color:var(--green-lt); display:block; text-align:center;">Ready to End the Feast-or-Famine Cycle?</p>
+    <h2 class="reveal reveal-delay-1">Book Your Free Strategy Session</h2>
+    <p class="reveal reveal-delay-2">
+      A 30-minute call. No pitch, no pressure. We'll map your ideal client profile, audit your current lead flow, and show you exactly how the B2B Sales Accelerator would work for your firm — whether or not we work together.
+    </p>
+    <div class="reveal reveal-delay-3" style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-top:40px;">
+      <a href="contact.html" class="btn btn--green btn--lg">Request My Free Strategy Session →</a>
+      <a href="services.html" class="btn btn--ghost btn--lg">Learn More First</a>
+    </div>
+    <p class="reveal reveal-delay-4" style="margin-top:24px; font-size:13px; color:rgba(255,255,255,.3); text-align:center;">
+      Typically respond within 1 business day · No spam, ever · $3,500/month with a 10-appointment guarantee
+    </p>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Truviar <span>AI</span> Consulting</div>
+        <p class="footer-tagline">Predictable B2B client acquisition for consulting firms. 10 qualified appointments per month — guaranteed.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="services.html">B2B Sales Accelerator</a>
+        <a href="services.html#process">How It Works</a>
+        <a href="services.html#pricing">Pricing</a>
+        <a href="contact.html">Book a Call</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="about.html">About Hemant</a>
+        <a href="proof.html">Client Results</a>
+        <a href="podcast.html">Podcast</a>
+        <a href="contact.html#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="https://linkedin.com/company/truviar" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:hemant@truviar.com">hemant@truviar.com</a>
+        <a href="contact.html">Strategy Session</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025–2026 Truviar AI Consulting. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <span>Noida, India · Serving consulting firms globally</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12V4M4 8l4-4 4 4"/></svg>
+</button>
+
+<script src="js/main.js"></script>
+</body>
+</html>
