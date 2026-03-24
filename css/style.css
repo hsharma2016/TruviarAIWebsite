@@ -132,8 +132,8 @@ h4 { font-size: 1.1rem; }
   justify-content: space-between;
   max-width: var(--max);
   margin: 0 auto;
-  padding: 0 28px;
-  height: 68px;
+  padding: 0 32px;
+  height: 72px;
 }
 
 .nav-logo {
@@ -142,12 +142,9 @@ h4 { font-size: 1.1rem; }
   align-items: center;
 }
 .nav-logo-img {
-  height: 40px;
+  height: 34px;
   width: auto;
   display: block;
-  border-radius: 4px;
-  background: var(--white);
-  padding: 3px 6px;
 }
 
 .nav-links {
@@ -207,7 +204,7 @@ h4 { font-size: 1.1rem; }
 .nav-mobile {
   display: none;
   position: fixed;
-  inset: 68px 0 0;
+  inset: 72px 0 0;
   background: var(--navy);
   z-index: 199;
   padding: 40px 28px;
@@ -598,12 +595,9 @@ footer {
 }
 .footer-logo { margin-bottom: 4px; }
 .footer-logo-img {
-  height: 48px;
+  height: 40px;
   width: auto;
   display: block;
-  border-radius: 4px;
-  background: var(--white);
-  padding: 4px 8px;
 }
 .footer-tagline { font-size: 14px; color: rgba(255,255,255,.38); margin-top: 12px; line-height: 1.7; }
 .footer-col h5 {
