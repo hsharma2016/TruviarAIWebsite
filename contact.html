@@ -3,12 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book a Strategy Session | Truviar AI Consulting</title>
-  <meta name="description" content="Book your free 30-minute strategy session with Truviar AI Consulting. We'll map your ideal client profile and outline exactly what a well-designed growth system could look like for your practice." />
+  <title>Book an AI Growth Strategy Session | Truviar</title>
+  <meta name="description" content="Book a free 30-minute strategy session. We'll assess your growth model and explore what an AI-powered growth system could look like for your firm." />
+  <!-- TODO: Replace {{DOMAIN}} with confirmed production URL before deploy -->
+  <link rel="canonical" href="{{DOMAIN}}/contact" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{DOMAIN}}/contact" />
+  <meta property="og:title" content="Book an AI Growth Strategy Session | Truviar" />
+  <meta property="og:description" content="Book a free 30-minute strategy session. We'll assess your growth model and explore what an AI-powered growth system could look like for your firm." />
+  <meta property="og:image" content="{{DOMAIN}}/assets/images/og-default.png" />
+  <meta property="og:site_name" content="Truviar AI Consulting" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Book an AI Growth Strategy Session | Truviar" />
+  <meta name="twitter:description" content="Book a free 30-minute strategy session. We'll assess your growth model and explore what an AI-powered growth system could look like for your firm." />
+  <meta name="twitter:image" content="{{DOMAIN}}/assets/images/og-default.png" />
+  <!-- TODO: Replace placeholder OG image with professionally designed version -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
+  <!-- TODO: Replace placeholder favicons with final exports from logo file -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is it really free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. No charge, no catch. We do it because we want to understand your firm before either of us commits. If it's not a fit, we'll say so."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I'm not ready to start right now?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "That's fine. Most people use the session to understand what's possible. Start when the timing is right."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the investment look like?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depends on scope. We discuss this during the session once we understand your firm and goals. No lock-in contracts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do you need from me to get started?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "After the session, about 60–90 minutes for onboarding — your ideal client profile, qualification criteria, positioning. From there, we build and run everything. You show up to conversations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you work with solo practitioners?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Solo founders to 30-person firms. The key qualifier is engagement value, not team size."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you work with firms outside India?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Fully remote, all time zones."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if it's not a fit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We'll tell you. Honestly. We'd rather have a useful conversation than sign someone we can't genuinely help."
+        }
+      }
+    ]
+  }
+  </script>
   <style>
     /* ── CONTACT-SPECIFIC STYLES ──────────────────────────── */
 
@@ -185,7 +268,7 @@
     <div class="nav-links">
       <a href="services.html">How We Help</a>
       <a href="about.html">About</a>
-      <a href="proof.html">Results</a>
+      <a href="case-studies.html">Results</a>
       <a href="podcast.html">Podcast</a>
       <a href="contact.html#faq" class="active">FAQ</a>
       <a href="contact.html" class="nav-cta">Book a Strategy Session</a>
@@ -198,7 +281,7 @@
 <div class="nav-mobile">
   <a href="services.html">How We Help</a>
   <a href="about.html">About</a>
-  <a href="proof.html">Results</a>
+  <a href="case-studies.html">Results</a>
   <a href="podcast.html">Podcast</a>
   <a href="contact.html#faq">FAQ</a>
   <a href="contact.html" class="nav-mobile-cta">Book a Strategy Call →</a>
@@ -370,6 +453,7 @@
           <p class="form-disclaimer">
             We typically respond within 1 business day. Your information is kept strictly confidential and is never shared with third parties.
           </p>
+          <!-- TODO: CRITICAL — This form shows a success message but does not actually submit data to any backend. Wire to a real endpoint (Google Sheets, Formspree, or Calendly) before deploy. -->
         </form>
       </div>
 
@@ -460,7 +544,7 @@
     </p>
     <div class="cta-band-btns reveal reveal-delay-2">
       <a href="services.html" class="btn btn--green btn--lg">See How We Work →</a>
-      <a href="proof.html" class="btn btn--ghost btn--lg">Read Client Results</a>
+      <a href="case-studies.html" class="btn btn--ghost btn--lg">Read Client Results</a>
     </div>
   </div>
 </section>
@@ -483,7 +567,7 @@
       <div class="footer-col">
         <h5>Company</h5>
         <a href="about.html">About Hemant</a>
-        <a href="proof.html">Client Results</a>
+        <a href="case-studies.html">Client Results</a>
         <a href="podcast.html">Podcast</a>
         <a href="contact.html#faq">FAQ</a>
       </div>

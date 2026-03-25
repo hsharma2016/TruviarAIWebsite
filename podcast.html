@@ -3,12 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Consulting Growth Blueprint Podcast | Truviar AI Consulting</title>
-  <meta name="description" content="The Consulting Growth Blueprint — a podcast for consulting firm owners who want predictable, scalable growth. Inaugural season coming soon. Apply to be a guest." />
+  <title>The Consulting Growth Blueprint Podcast | Truviar</title>
+  <meta name="description" content="The Consulting Growth Blueprint — conversations with firm owners on what actually works for predictable, scalable growth. Launching soon." />
+  <!-- TODO: Replace {{DOMAIN}} with confirmed production URL before deploy -->
+  <link rel="canonical" href="{{DOMAIN}}/podcast" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{DOMAIN}}/podcast" />
+  <meta property="og:title" content="The Consulting Growth Blueprint Podcast | Truviar" />
+  <meta property="og:description" content="The Consulting Growth Blueprint — conversations with firm owners on what actually works for predictable, scalable growth. Launching soon." />
+  <meta property="og:image" content="{{DOMAIN}}/assets/images/og-default.png" />
+  <meta property="og:site_name" content="Truviar AI Consulting" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Consulting Growth Blueprint Podcast | Truviar" />
+  <meta name="twitter:description" content="The Consulting Growth Blueprint — conversations with firm owners on what actually works for predictable, scalable growth. Launching soon." />
+  <meta name="twitter:image" content="{{DOMAIN}}/assets/images/og-default.png" />
+  <!-- TODO: Replace placeholder OG image with professionally designed version -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
+  <!-- TODO: Replace placeholder favicons with final exports from logo file -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PodcastSeries",
+    "name": "The Consulting Growth Blueprint",
+    "description": "Conversations with professional services firm owners on what it actually takes to build predictable, scalable growth.",
+    "author": {
+      "@type": "Person",
+      "name": "Hemant Sharma"
+    }
+  }
+  </script>
+  <!-- TODO: Add url to PodcastSeries schema once production domain is confirmed -->
   <style>
     /* ── PODCAST-SPECIFIC STYLES ──────────────────────────── */
 
@@ -191,7 +223,7 @@
     <div class="nav-links">
       <a href="services.html">How We Help</a>
       <a href="about.html">About</a>
-      <a href="proof.html">Results</a>
+      <a href="case-studies.html">Results</a>
       <a href="podcast.html" class="active">Podcast</a>
       <a href="contact.html#faq">FAQ</a>
       <a href="contact.html" class="nav-cta">Book a Strategy Session</a>
@@ -204,7 +236,7 @@
 <div class="nav-mobile">
   <a href="services.html">How We Help</a>
   <a href="about.html">About</a>
-  <a href="proof.html">Results</a>
+  <a href="case-studies.html">Results</a>
   <a href="podcast.html">Podcast</a>
   <a href="contact.html#faq">FAQ</a>
   <a href="contact.html" class="nav-mobile-cta">Book a Strategy Call →</a>
@@ -312,6 +344,7 @@
           <p id="notify-success" style="display:none; margin-top:12px; font-size:13px; color:#1D9E75; font-weight:500;">
             ✓ You're on the list! We'll email you when the first episode drops.
           </p>
+          <!-- TODO: CRITICAL — This form shows a success message but does not actually submit data to any backend. Wire to a real endpoint (Google Sheets, Formspree, or Calendly) before deploy. -->
         </form>
         <p style="margin-top:16px; font-size:12px; color:var(--gray-1);">No spam. Unsubscribe any time. We publish quality, not volume.</p>
       </div>
@@ -413,6 +446,7 @@
           <p id="guest-success" style="display:none; margin-top:12px; font-size:13px; color:var(--green-lt); text-align:center;">
             ✓ Application received. We'll be in touch within 3 business days.
           </p>
+          <!-- TODO: CRITICAL — This form shows a success message but does not actually submit data to any backend. Wire to a real endpoint (Google Sheets, Formspree, or Calendly) before deploy. -->
         </form>
       </div>
     </div>
@@ -426,7 +460,7 @@
     <p class="tag" style="color:var(--green-lt); display:block; text-align:center;">While You Wait</p>
     <h2 class="reveal">Your Growth Doesn't Have<br>to Wait for the Podcast</h2>
     <p class="reveal reveal-delay-1">
-      The show launches soon. But if you're thinking about your pipeline right now, let's just talk. A 30-minute conversation is enough to work out whether building a proper growth system makes sense for your firm.
+      The show launches soon. But if you're thinking about your pipeline right now, let's just talk. A 30-minute conversation is enough to work out whether <a href="services.html" style="color:rgba(255,255,255,.8); text-decoration:underline; text-underline-offset:3px;">building a proper growth system</a> makes sense for your firm.
     </p>
     <div class="cta-band-btns reveal reveal-delay-2">
       <a href="contact.html" class="btn btn--green btn--lg">Book a Strategy Session →</a>
@@ -453,7 +487,7 @@
       <div class="footer-col">
         <h5>Company</h5>
         <a href="about.html">About Hemant</a>
-        <a href="proof.html">Client Results</a>
+        <a href="case-studies.html">Client Results</a>
         <a href="podcast.html">Podcast</a>
         <a href="contact.html#faq">FAQ</a>
       </div>

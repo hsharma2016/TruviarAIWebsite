@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: {{DOMAIN}}/sitemap.xml
+# TODO: Replace {{DOMAIN}} with confirmed production URL before deploy
