@@ -337,15 +337,17 @@
         <p>
           Drop your email below and we'll notify you the moment the first episode goes live — plus early access to bonus content not published on streaming platforms.
         </p>
-        <form id="notify-form" onsubmit="handleNotify(event)">
+        <form id="notify-form">
           <div class="notify-form">
-            <input type="email" placeholder="Your email address" required id="notify-email" />
-            <button type="submit" class="btn btn--green">Notify Me</button>
+            <input type="email" name="email" placeholder="Your email address" required id="notify-email" />
+            <button type="submit" class="btn btn--green" id="notify-btn">Notify Me</button>
           </div>
           <p id="notify-success" style="display:none; margin-top:12px; font-size:13px; color:#1D9E75; font-weight:500;">
             ✓ You're on the list! We'll email you when the first episode drops.
           </p>
-          <!-- TODO: CRITICAL — This form shows a success message but does not actually submit data to any backend. Wire to a real endpoint (Google Sheets, Formspree, or Calendly) before deploy. -->
+          <p id="notify-error" style="display:none; margin-top:12px; font-size:13px; color:#C94C4C;">
+            Something went wrong. Please try again or email <a href="mailto:hemant@truviaraiconsulting.com" style="color:#C94C4C;">hemant@truviaraiconsulting.com</a>
+          </p>
         </form>
         <p style="margin-top:16px; font-size:12px; color:var(--gray-1);">No spam. Unsubscribe any time. We publish quality, not volume.</p>
       </div>
@@ -424,30 +426,32 @@
 
       <div class="guest-form-card reveal reveal-delay-1">
         <h3>Apply to Appear on the Show</h3>
-        <form id="guest-form" onsubmit="handleGuest(event)">
+        <form id="guest-form">
           <div class="form-group form-dark">
             <label class="form-label">Your name *</label>
-            <input type="text" class="form-input" placeholder="Full name" required />
+            <input type="text" name="name" class="form-input" placeholder="Full name" required />
           </div>
           <div class="form-group form-dark" style="margin-top:14px;">
             <label class="form-label">Firm name &amp; your role *</label>
-            <input type="text" class="form-input" placeholder="e.g. Acme Consulting · Managing Partner" required />
+            <input type="text" name="firm_and_role" class="form-input" placeholder="e.g. Acme Consulting · Managing Partner" required />
           </div>
           <div class="form-group form-dark" style="margin-top:14px;">
             <label class="form-label">Email address *</label>
-            <input type="email" class="form-input" placeholder="your@email.com" required />
+            <input type="email" name="email" class="form-input" placeholder="your@email.com" required />
           </div>
           <div class="form-group form-dark" style="margin-top:14px;">
             <label class="form-label">What would you like to share on the podcast? *</label>
-            <textarea class="form-textarea form-dark" placeholder="Describe the topic, story, or insight you'd bring to our audience…" style="min-height:100px; background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.14); color:var(--white);" required></textarea>
+            <textarea name="topic" class="form-textarea form-dark" placeholder="Describe the topic, story, or insight you'd bring to our audience…" style="min-height:100px; background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.14); color:var(--white);" required></textarea>
           </div>
-          <button type="submit" class="btn btn--green" style="width:100%; justify-content:center; margin-top:20px; font-size:15px; padding:15px;">
+          <button type="submit" id="guest-btn" class="btn btn--green" style="width:100%; justify-content:center; margin-top:20px; font-size:15px; padding:15px;">
             Submit My Guest Application →
           </button>
           <p id="guest-success" style="display:none; margin-top:12px; font-size:13px; color:var(--green-lt); text-align:center;">
             ✓ Application received. We'll be in touch within 3 business days.
           </p>
-          <!-- TODO: CRITICAL — This form shows a success message but does not actually submit data to any backend. Wire to a real endpoint (Google Sheets, Formspree, or Calendly) before deploy. -->
+          <p id="guest-error" style="display:none; margin-top:12px; font-size:13px; color:#C94C4C; text-align:center;">
+            Something went wrong. Please try again or email <a href="mailto:hemant@truviaraiconsulting.com" style="color:#C94C4C;">hemant@truviaraiconsulting.com</a>
+          </p>
         </form>
       </div>
     </div>
@@ -515,19 +519,61 @@
 
 <script src="js/main.js"></script>
 <script>
-  function handleNotify(e) {
+  // ── FORMSPREE SETUP ──────────────────────────────────────────
+  // 1. Sign up free at https://formspree.io
+  // 2. Create two forms: "Podcast Notify" and "Podcast Guest"
+  // 3. Paste the IDs below
+  var NOTIFY_FORM_ID = 'YOUR_NOTIFY_FORM_ID'; // ← replace this
+  var GUEST_FORM_ID  = 'YOUR_GUEST_FORM_ID';  // ← replace this
+  // ─────────────────────────────────────────────────────────────
+
+  document.getElementById('notify-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    document.getElementById('notify-form').querySelector('button').textContent = '✓ You\'re on the list!';
-    document.getElementById('notify-success').style.display = 'block';
-  }
-  function handleGuest(e) {
+    var btn       = document.getElementById('notify-btn');
+    var successEl = document.getElementById('notify-success');
+    var errorEl   = document.getElementById('notify-error');
+    successEl.style.display = 'none';
+    errorEl.style.display   = 'none';
+    btn.disabled    = true;
+    btn.textContent = 'Adding you…';
+    try {
+      var res = await fetch('https://formspree.io/f/' + NOTIFY_FORM_ID, {
+        method: 'POST', body: new FormData(this), headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        btn.textContent = '✓ You\'re on the list!';
+        successEl.style.display = 'block';
+      } else { throw new Error(); }
+    } catch {
+      btn.disabled    = false;
+      btn.textContent = 'Notify Me';
+      errorEl.style.display = 'block';
+    }
+  });
+
+  document.getElementById('guest-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.textContent = '✓ Application Submitted!';
-    btn.style.background = '#1D9E75';
-    btn.disabled = true;
-    document.getElementById('guest-success').style.display = 'block';
-  }
+    var btn       = document.getElementById('guest-btn');
+    var successEl = document.getElementById('guest-success');
+    var errorEl   = document.getElementById('guest-error');
+    successEl.style.display = 'none';
+    errorEl.style.display   = 'none';
+    btn.disabled    = true;
+    btn.textContent = 'Submitting…';
+    try {
+      var res = await fetch('https://formspree.io/f/' + GUEST_FORM_ID, {
+        method: 'POST', body: new FormData(this), headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        this.style.display      = 'none';
+        successEl.style.display = 'block';
+      } else { throw new Error(); }
+    } catch {
+      btn.disabled    = false;
+      btn.textContent = 'Submit My Guest Application →';
+      errorEl.style.display = 'block';
+    }
+  });
 </script>
 </body>
 </html>

@@ -376,29 +376,29 @@
         <h3>Request Your Strategy Session</h3>
         <p>Fill in your details and we'll be in touch within one business day to confirm your slot.</p>
 
-        <form id="contact-form">
+        <form id="contact-form" novalidate>
           <div class="cfc-row">
             <div class="form-field">
               <label>First name *</label>
-              <input type="text" placeholder="First name" required />
+              <input type="text" name="first_name" placeholder="First name" required />
             </div>
             <div class="form-field">
               <label>Last name *</label>
-              <input type="text" placeholder="Last name" required />
+              <input type="text" name="last_name" placeholder="Last name" required />
             </div>
           </div>
           <div class="form-field">
             <label>Work email address *</label>
-            <input type="email" placeholder="you@yourfirm.com" required />
+            <input type="email" name="email" placeholder="you@yourfirm.com" required />
           </div>
           <div class="form-field">
             <label>Firm name *</label>
-            <input type="text" placeholder="Your consulting firm name" required />
+            <input type="text" name="firm_name" placeholder="Your consulting firm name" required />
           </div>
           <div class="cfc-row">
             <div class="form-field">
               <label>Your role *</label>
-              <select required>
+              <select name="role" required>
                 <option value="" disabled selected>Select your role</option>
                 <option>Founder / Owner</option>
                 <option>Managing Partner</option>
@@ -409,7 +409,7 @@
             </div>
             <div class="form-field">
               <label>Type of consulting *</label>
-              <select required>
+              <select name="consulting_type" required>
                 <option value="" disabled selected>Select type</option>
                 <option>Management Consulting</option>
                 <option>IT / Technology Consulting</option>
@@ -424,7 +424,7 @@
           <div class="cfc-row">
             <div class="form-field">
               <label>Firm size *</label>
-              <select required>
+              <select name="firm_size" required>
                 <option value="" disabled selected>Number of consultants</option>
                 <option>Solo / 1–2 people</option>
                 <option>3–10 people</option>
@@ -434,7 +434,7 @@
             </div>
             <div class="form-field">
               <label>Average project value</label>
-              <select>
+              <select name="project_value">
                 <option value="" disabled selected>Approx. deal size</option>
                 <option>$5,000 – $20,000</option>
                 <option>$20,000 – $50,000</option>
@@ -445,15 +445,21 @@
           </div>
           <div class="form-field">
             <label>What's your biggest pipeline challenge right now?</label>
-            <textarea placeholder="e.g. We rely almost entirely on referrals and have no consistent outbound system. We close well when we get in front of the right people, but getting there is the problem…"></textarea>
+            <textarea name="pipeline_challenge" placeholder="e.g. We rely almost entirely on referrals and have no consistent outbound system. We close well when we get in front of the right people, but getting there is the problem…"></textarea>
           </div>
-          <button type="submit" class="form-submit-btn" id="submit-btn">
+          <button type="submit" class="form-submit-btn" id="contact-submit-btn">
             Request My Free Strategy Session →
           </button>
+          <div id="contact-success" style="display:none; margin-top:20px; padding:20px; background:rgba(5,153,102,.08); border:1px solid rgba(5,153,102,.3); border-radius:var(--radius); text-align:center;">
+            <p style="font-weight:500; color:#1D9E75; margin-bottom:6px;">✓ Request received — thank you.</p>
+            <p style="font-size:14px; color:var(--gray-1);">We'll be in touch within one business day to confirm your strategy session.</p>
+          </div>
+          <div id="contact-error" style="display:none; margin-top:20px; padding:16px; background:rgba(201,76,76,.06); border:1px solid rgba(201,76,76,.25); border-radius:var(--radius);">
+            <p style="font-size:14px; color:#C94C4C;">Something went wrong. Please try again or email us directly at <a href="mailto:hemant@truviaraiconsulting.com" style="color:#C94C4C;">hemant@truviaraiconsulting.com</a></p>
+          </div>
           <p class="form-disclaimer">
             We typically respond within 1 business day. Your information is kept strictly confidential and is never shared with third parties.
           </p>
-          <!-- TODO: CRITICAL — This form shows a success message but does not actually submit data to any backend. Wire to a real endpoint (Google Sheets, Formspree, or Calendly) before deploy. -->
         </form>
       </div>
 
@@ -594,17 +600,51 @@
 
 <script src="js/main.js"></script>
 <script>
-  // Override default form handler with contact-specific success state
+  // ── FORMSPREE SETUP ──────────────────────────────────────────
+  // 1. Sign up free at https://formspree.io
+  // 2. Create a new form called "Strategy Session"
+  // 3. Paste the form ID (e.g. "xdoqkbzy") below
+  // 4. Formspree will email you every submission at hemant@truviaraiconsulting.com
+  var CONTACT_FORM_ID = 'YOUR_CONTACT_FORM_ID'; // ← replace this
+  // ─────────────────────────────────────────────────────────────
+
   document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const btn = document.getElementById('submit-btn');
-    btn.disabled = true;
-    btn.textContent = 'Sending your request…';
-    await new Promise(r => setTimeout(r, 1400));
-    btn.textContent = '✓ Request Received — We\'ll be in touch within 1 business day.';
-    btn.style.background = '#1B8A60';
-    this.querySelectorAll('input, select, textarea').forEach(f => f.disabled = true);
-  }, { once: true });
+    var btn = document.getElementById('contact-submit-btn');
+    var successEl = document.getElementById('contact-success');
+    var errorEl   = document.getElementById('contact-error');
+
+    // Reset states
+    successEl.style.display = 'none';
+    errorEl.style.display   = 'none';
+
+    // Loading state
+    btn.disabled    = true;
+    btn.textContent = 'Sending…';
+
+    var data = new FormData(this);
+
+    try {
+      var res = await fetch('https://formspree.io/f/' + CONTACT_FORM_ID, {
+        method:  'POST',
+        body:    data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        this.style.display  = 'none';
+        successEl.style.display = 'block';
+      } else {
+        var json = await res.json();
+        throw new Error(json.error || 'Submission failed');
+      }
+    } catch (err) {
+      btn.disabled    = false;
+      btn.textContent = 'Request My Free Strategy Session →';
+      errorEl.style.display = 'block';
+      console.error('Form error:', err);
+    }
+  });
 </script>
 </body>
 </html>
