@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: {{DOMAIN}}/sitemap.xml
-# TODO: Replace {{DOMAIN}} with confirmed production URL before deploy
+Sitemap: https://truviaraiconsulting.com/sitemap.xml
+# TODO: Replace https://truviaraiconsulting.com with confirmed production URL before deploy
