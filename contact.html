@@ -605,7 +605,7 @@
   // 2. Create a new form called "Strategy Session"
   // 3. Paste the form ID (e.g. "xdoqkbzy") below
   // 4. Formspree will email you every submission at hemant@truviaraiconsulting.com
-  var CONTACT_FORM_ID = 'YOUR_CONTACT_FORM_ID'; // ← replace this
+  fetch('https://formspree.io/f/' + CONTACT_FORM_ID, ...); // ← replace this
   // ─────────────────────────────────────────────────────────────
 
   document.getElementById('contact-form').addEventListener('submit', async function(e) {
