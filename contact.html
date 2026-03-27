@@ -599,47 +599,41 @@
 </button>
 
 <script src="js/main.js"></script>
-<script>
-  // ── FORMSPREE SETUP ──────────────────────────────────────────
-  // 1. Sign up free at https://formspree.io
-  // 2. Create a new form called "Strategy Session"
-  // 3. Paste the form ID (e.g. "xdoqkbzy") below
-  // 4. Formspree will email you every submission at hemant@truviaraiconsulting.com
-  fetch('https://formspree.io/f/' + CONTACT_FORM_ID, ...); // ← replace this
-  // ─────────────────────────────────────────────────────────────
 
+<script>
   document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
+
+    var form = this;
     var btn = document.getElementById('contact-submit-btn');
     var successEl = document.getElementById('contact-success');
-    var errorEl   = document.getElementById('contact-error');
+    var errorEl = document.getElementById('contact-error');
 
-    // Reset states
     successEl.style.display = 'none';
-    errorEl.style.display   = 'none';
+    errorEl.style.display = 'none';
 
-    // Loading state
-    btn.disabled    = true;
+    btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    var data = new FormData(this);
+    var data = new FormData(form);
 
     try {
-      var res = await fetch('https://formspree.io/f/' + CONTACT_FORM_ID, {
-        method:  'POST',
-        body:    data,
+      var res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
         headers: { 'Accept': 'application/json' }
       });
 
       if (res.ok) {
-        this.style.display  = 'none';
+        form.reset();
+        btn.style.display = 'none';
         successEl.style.display = 'block';
       } else {
         var json = await res.json();
-        throw new Error(json.error || 'Submission failed');
+        throw new Error((json && json.error) || 'Submission failed');
       }
     } catch (err) {
-      btn.disabled    = false;
+      btn.disabled = false;
       btn.textContent = 'Request My Free Strategy Session →';
       errorEl.style.display = 'block';
       console.error('Form error:', err);
